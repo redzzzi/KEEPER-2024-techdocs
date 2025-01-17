@@ -1,3 +1,6 @@
+아래는 가장 많이 사용되는 git 명령어 모음 링크입니다.
+https://docs.gitlab.com/ee/topics/git/commands.html
+
 # 리액트 앱 생성
 - CI/CD 파이프라인 테스트를 위해 간단히 리액트 앱을 생성 후 테스트하였습니다. 간단한 설명과 명령어들을 작성하였습니다.
 - 생성 명령어
@@ -21,5 +24,54 @@ npm start
 ```
 
 # 도커
+- Linux 기준으로 작성되었습니다.
+- 도커 실행 여부 확인
+```
+docker info
+```
+- [도커 데몬](https://www.geeksforgeeks.org/what-is-docker-daemon/) 시작
+```
+sudo systemctl start docker
+```
+- 실행 중인 컨테이너 확인
+```
+docker ps
+```
+- 도커 컨테이너 시작
+```
+docker start <컨테이너 ID 또는 이름>
+```
+- **Dockerfile 사용 시 컨테이너 재빌드 및 실행**
+  - 경로: 리액트 앱의 루트 경로
+  - `3000:80`은 호스트의 3000번 포트에 요청이 들어오면, 이를 컨테이너 내부 80번 포트로 전달한다는 의미입니다.
+```
+docker build -t <앱 이름> .
+```
+```
+docker run -p 3000:80 <앱 이름>
+```
 
 # 깃랩
+- gitlab-runner 사용 (Window Powershell)
+  - `gitlab-runner.exe` 설치
+  - 시스템 PATH 환경 변수 추가
+```powershell
+& "C:\Program Files\gitlab-runner.exe" register
+```
+- gitlab-runner 실행 로그
+```
+& "C:\Program Files\gitlab-runner.exe" --debug run
+```
+
+# 기타 
+## yamllint
+- yml 파일의 유효성에 대해 판단해주는 도구입니다.
+- 설치
+```
+sudo apt-get install yamllint
+```
+- 이용
+```
+yamllint <파일명>
+```
+![image](https://github.com/user-attachments/assets/ff471317-9df9-4e6f-aaff-967205e8a1d4)
